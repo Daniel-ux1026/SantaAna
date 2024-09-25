@@ -1,0 +1,297 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+nav {
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1rem;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2rem;
+}
+
+section {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 1rem 0;
+    padding: 1rem;
+    width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section:hover {
+    transform: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-top: 0.5rem;
+}
+
+form input, form button {
+    
+    margin-top: 0.7rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+form button {
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #555;
+}
+
+/*aside {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 1rem;
+    padding: 1rem;
+    width: calc(33% - 2rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    margin-left: auto;
+    margin-right: auto; 
+    margin-bottom: 5rem; 
+} */
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+header .fig1{
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    width: 100px;
+}
+
+
+section .fig2{
+    
+    max-width: 100%;
+    
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+section .fig3{
+    
+    margin-bottom: 1rem;
+    max-width: 100%;
+}
+
+section .fig4{
+    
+    margin-bottom: 1rem;
+    max-width: 100%;
+}
+
+section .fig5{
+    
+    max-width: 100%;
+}
+
+section .fig6{
+    margin-bottom: -1rem;
+    max-width: 100%;
+}
+
+.modal-body {
+    text-align: justify;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+/* Media Queries */
+
+/* For mobile devices (up to 600px) */
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        align-items: center; /* Center navigation links */
+    }
+
+    aside {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    section {
+        width: 100%;
+    }
+
+    header {
+        font-size: 1.5rem; /* Increase font size */
+        padding: 2rem 0; /* Add more padding */
+        background-color: #444; /* Slightly lighter background color */
+    }
+}
+
+/* For tablets (601px to 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    nav {
+        flex-direction: column;
+        align-items: center; /* Center navigation links */
+    }
+
+    aside {
+        width: 100%;
+    }
+
+    section {
+        width: 100%;
+    }
+}
+
+/* For large screens (1025px and up) */
+@media (min-width: 1025px) {
+    nav {
+        justify-content: center; /* Center navigation links */
+    }
+
+    main {
+        flex-direction: column; /* Display sections as columns */
+        align-items: center; /* Center sections horizontally */
+    }
+
+    aside {
+        width: calc(33% - 2rem);
+    }
+
+    section {
+        width: 100%; /* Make sections take full width */
+    }
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    text-align: center; /* Center text */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the start */
+}
+
+section p {
+    text-align: justify; /* Justify text in each section */
+}
+
+form button {
+    align-self: center; /* Center the submit button */
+}
+
+/* Specific styles for each section to position image and text */
+
+section:nth-of-type(1) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+section:nth-of-type(1) .fig2 {
+    margin: 0;
+    flex-shrink: 0;
+}
+
+section:nth-of-type(2) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+section:nth-of-type(2) .fig3 {
+    margin: 0;
+    flex-shrink: 0;
+}
+
+section:nth-of-type(3) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+section:nth-of-type(3) .fig4 {
+    margin: 0;
+    flex-shrink: 0;
+}
+
