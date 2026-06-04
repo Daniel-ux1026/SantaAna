@@ -1,0 +1,204 @@
+================================================================================
+PROMPT DE CONTINUACIÓN — PROYECTO IGLESIA DEL NAZARENO SANTA ANA
+Fecha: 04/06/2026
+================================================================================
+
+Copia y pega este texto completo al iniciar una nueva sesión con el asistente
+de IA para retomar el proyecto con todo el contexto.
+
+================================================================================
+1. IDENTIDAD DEL PROYECTO
+================================================================================
+
+Nombre: Iglesia del Nazareno Santa Ana
+Tipo: Sitio web institucional + formulario de inscripción + panel administrativo
+Ubicación: San Fernando #174, Chiclayo, Perú
+Tema: Iglesia cristiana evangélica (Nazareno). Diseño moderno, esperanza, comunidad, fe.
+Repositorio GitHub: https://github.com/Daniel-ux1026/SantaAna
+Autor en package.json: daniel
+
+Ramas Git:
+- main    → Producción estable (no romper sin pruebas)
+- develop → Desarrollo y cambios nuevos (trabajar aquí por defecto)
+
+Carpeta local típica: c:\Users\Olivos\Downloads\SantaAna-main
+
+================================================================================
+2. STACK TECNOLÓGICO
+================================================================================
+
+Backend:
+- Node.js + Express.js 5
+- SQLite (archivo participants.db en raíz)
+- body-parser, bcryptjs, express-session, dotenv
+- xlsx, exceljs (para exportación futura)
+
+Frontend:
+- HTML5, CSS3, JavaScript vanilla
+- Bootstrap 5.3.3 + Bootstrap Icons
+- Fuentes: Poppins (títulos), Inter (cuerpo)
+
+Paleta de colores:
+- Primary: #2563EB | Secondary: #F59E0B | Dark: #0F172A
+- Light: #F8FAFC | White: #FFFFFF
+
+================================================================================
+3. REGLAS OBLIGATORIAS AL MODIFICAR (NO ROMPER)
+================================================================================
+
+1. NO eliminar funcionalidades existentes
+2. NO romper SQLite ni borrar datos de participants.db
+3. NO romper Express ni POST /submit
+4. El formulario DEBE seguir guardando nombre + apellidos (obligatorios)
+5. Mantener Bootstrap 5 y compatibilidad Node.js 18+
+6. El archivo .env NUNCA se sube a Git (contiene hash de contraseña admin)
+7. Cambios nuevos → rama develop; main solo cuando esté probado
+8. Responder al usuario en español
+
+================================================================================
+4. QUÉ SE HA IMPLEMENTADO HASTA AHORA (04/06/2026)
+================================================================================
+
+--- SITIO PÚBLICO (public/index.html, css/styles.css, js/script.js) ---
+
+- Hero pantalla completa (img/cultos.png), overlay, animaciones
+- Navbar sticky: Inicio, Nosotros, Ministerios, Horarios, Sermones, Eventos, Contacto
+- Sobre Nosotros, Visión, Misión (textos originales en tarjetas, sin modales)
+- Versículo del día: Juan 3:16
+- Ministerios: Niños, Jóvenes, Mujeres, Varones, Matrimonios, Misiones
+- Horarios en tarjetas (Lun cerrado, Mar 8:30-10pm, Mié cerrado, Jue cerrado,
+  Vie cerrado, Sáb 8:30-10pm, Dom 10am-1pm)
+- Galería con lightbox (cultos, enseñanza, junta, local, reverendo, horario)
+- Sermones y Eventos: placeholders para contenido futuro
+- Formulario: nombre*, apellidos*, teléfono, correo (opcionales en UI y BD)
+- Validación + toasts Bootstrap (sin alert())
+- Contacto, footer, WhatsApp flotante
+- SEO: meta description, Open Graph, Twitter Cards, robots.txt, sitemap.xml
+- Accesibilidad WCAG AA (skip link, ARIA, focus visible)
+- Lazy loading imágenes, scripts defer
+
+--- BACKEND (server.js) ---
+
+- GET / → index.html
+- POST /submit → guarda en SQLite (nombre, apellidos obligatorios; tel, correo opc.)
+- Migración automática columnas: telefono, correo, created_at
+- Servidor arranca tras migración DB
+
+--- PANEL ADMIN (protegido) ---
+
+Rutas:
+- GET /admin/login → private/admin-login.html
+- GET /admin → private/admin.html (requiere sesión)
+- POST /api/admin/login, POST /api/admin/logout
+- GET /api/admin/session, /api/admin/stats, /api/admin/participants (protegidas)
+
+Seguridad (lib/admin-auth.js):
+- Contraseña bcrypt en .env (ADMIN_PASSWORD_HASH)
+- Sesión express-session, cookie httpOnly, 2 horas
+- Bloqueo 15 min tras 5 intentos fallidos
+- HTML admin en carpeta private/ (no público directo)
+- Usuario por defecto: admin
+- Configurar: node scripts/set-admin-password.js "TuContraseña"
+
+--- CONTACTO ACTUAL EN EL SITIO ---
+
+- Dirección: San Fernando #174, Chiclayo, Perú
+- Teléfono/WhatsApp: 976 580 918 → wa.me/51976580918
+- Facebook: https://www.facebook.com/p/Iglesia-del-Nazareno-Santa-Ana-100066810976376/
+- NO tiene YouTube (eliminado del sitio)
+
+--- DOCUMENTACIÓN EN EL REPO ---
+
+- README.md → descripción completa del proyecto
+- CAMBIOS.md → registro detallado de todos los cambios del rediseño
+- .env.example → plantilla variables de entorno
+
+--- ESTRUCTURA DE CARPETAS ---
+
+SantaAna-main/
+├── server.js
+├── package.json
+├── participants.db
+├── participants.xlsx
+├── .env (local, NO en Git)
+├── .env.example
+├── README.md
+├── CAMBIOS.md
+├── PROMPT-CONTINUACION-04-06-2026.txt (este archivo)
+├── lib/admin-auth.js
+├── scripts/set-admin-password.js
+├── private/admin.html, admin-login.html
+└── public/
+    ├── index.html, robots.txt, sitemap.xml
+    ├── css/styles.css, admin.css
+    ├── js/script.js, admin.js, admin-login.js
+    └── img/ (logo, cultos, enseñanza, junta, local, reverendo, horario)
+
+================================================================================
+5. CÓMO EJECUTAR EL PROYECTO
+================================================================================
+
+cd SantaAna-main
+npm install
+node scripts/set-admin-password.js "TuContraseña"   # si no existe .env
+npm start   # o: node server.js
+
+URLs:
+- Sitio: http://localhost:3000
+- Admin: http://localhost:3000/admin
+- Login: http://localhost:3000/admin/login
+
+================================================================================
+6. FLUJO GIT RECOMENDADO
+================================================================================
+
+git checkout develop
+# ... hacer cambios ...
+git add .
+git commit -m "mensaje"
+git push origin develop
+
+# Cuando esté listo para producción:
+git checkout main
+git merge develop
+git push origin main
+
+================================================================================
+7. PENDIENTE / IMPLEMENTAR A FUTURO
+================================================================================
+
+[ ] Sermones: contenido real (audio, video o enlaces)
+[ ] Eventos: calendario dinámico de actividades
+[ ] Panel admin: exportar inscritos a Excel
+[ ] Panel admin: filtros y búsqueda en tabla de participantes
+[ ] Panel admin: gráficos de inscripciones por fecha
+[ ] Panel admin: registro de accesos (audit log)
+[ ] Despliegue producción: revisar .github/workflows/deploy.yml
+      (dispara en branch "master" pero el repo usa "main"; publish_dir ./dist
+       no coincide con app Node — hay que adaptar deploy real)
+[ ] Dominio propio en sitemap/SEO (ahora placeholder iglesianazarenosantaana.org)
+[ ] HTTPS y NODE_ENV=production en servidor real
+[ ] Posible autenticación 2FA en admin (opcional)
+
+================================================================================
+8. ARCHIVOS CLAVE SI HAY QUE DEBUGGEAR
+================================================================================
+
+- server.js → rutas, SQLite, sesiones, auth
+- lib/admin-auth.js → login, bloqueo intentos, middleware requireAdmin
+- public/js/script.js → formulario /submit, galería, navbar
+- public/js/admin.js → carga participantes (credentials: same-origin)
+- public/js/admin-login.js → formulario login
+
+================================================================================
+9. PROMPT SUGERIDO PARA LA PRÓXIMA SESIÓN
+================================================================================
+
+"Estoy retomando el proyecto Iglesia del Nazareno Santa Ana.
+Lee PROMPT-CONTINUACION-04-06-2026.txt, README.md y CAMBIOS.md.
+Trabaja en la rama develop. No rompas SQLite ni el formulario.
+[Describe aquí la tarea concreta que quieres hacer]"
+
+================================================================================
+FIN DEL PROMPT — 04/06/2026
+================================================================================
