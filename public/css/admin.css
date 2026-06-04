@@ -1,0 +1,117 @@
+:root {
+    --primary: #2563EB;
+    --dark: #0F172A;
+    --light: #F8FAFC;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--light);
+    color: #334155;
+}
+
+.admin-header {
+    background: var(--dark);
+    color: #fff;
+    padding: 1.25rem 0;
+}
+
+.admin-header h1 {
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+}
+
+.stat-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
+    height: 100%;
+}
+
+.stat-card i {
+    font-size: 2rem;
+    color: var(--primary);
+}
+
+.stat-primary {
+    border-left: 4px solid var(--primary);
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.85rem;
+    color: #64748B;
+}
+
+.stat-value {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.stat-small {
+    font-size: 1.25rem;
+}
+
+.admin-table {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
+}
+
+.admin-table thead {
+    background: var(--dark);
+    color: #fff;
+}
+
+.admin-table th {
+    font-weight: 600;
+    font-size: 0.875rem;
+    border: none;
+    padding: 1rem;
+}
+
+.admin-table td {
+    padding: 0.875rem 1rem;
+    vertical-align: middle;
+}
+
+.admin-table tbody tr:hover {
+    background: rgba(37, 99, 235, 0.04);
+}
+
+/* Página de inicio de sesión */
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0F172A 0%, #1e3a5f 100%);
+    padding: 1.5rem;
+}
+
+.login-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+.login-card h1 {
+    font-family: 'Poppins', sans-serif;
+    color: #0F172A;
+}
+
+.login-card .btn-primary {
+    background: #2563EB;
+    border-color: #2563EB;
+    font-weight: 600;
+}

@@ -1,0 +1,754 @@
+/* ============================================
+   Iglesia del Nazareno Santa Ana — Design System
+   ============================================ */
+
+:root {
+    --primary: #2563EB;
+    --primary-dark: #1D4ED8;
+    --secondary: #F59E0B;
+    --secondary-dark: #D97706;
+    --dark: #0F172A;
+    --light: #F8FAFC;
+    --white: #FFFFFF;
+    --text: #334155;
+    --text-muted: #64748B;
+    --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(15, 23, 42, 0.08);
+    --shadow-lg: 0 12px 40px rgba(15, 23, 42, 0.12);
+    --radius: 12px;
+    --radius-lg: 20px;
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --navbar-height: 72px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text);
+    background-color: var(--light);
+    margin: 0;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--dark);
+    font-weight: 700;
+}
+
+/* Accesibilidad: enlace para saltar contenido */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 1rem;
+    z-index: 10000;
+    padding: 0.75rem 1.25rem;
+    background: var(--primary);
+    color: var(--white);
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: 600;
+    transition: top var(--transition);
+}
+
+.skip-link:focus {
+    top: 1rem;
+    outline: 3px solid var(--secondary);
+    outline-offset: 2px;
+}
+
+/* Focus visible WCAG AA */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+.btn:focus-visible {
+    outline: 3px solid var(--secondary);
+    outline-offset: 2px;
+}
+
+/* ========== Navbar ========== */
+#mainNavbar {
+    background: transparent;
+    padding: 1rem 0;
+    transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+}
+
+#mainNavbar.scrolled {
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(12px);
+    box-shadow: var(--shadow);
+    padding: 0.5rem 0;
+}
+
+#mainNavbar .navbar-brand {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--white) !important;
+}
+
+#mainNavbar .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    border-radius: 8px;
+    transition: color var(--transition), background var(--transition);
+}
+
+#mainNavbar .nav-link:hover,
+#mainNavbar .nav-link.active {
+    color: var(--secondary) !important;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 3px var(--secondary);
+}
+
+/* ========== Hero ========== */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    background: var(--dark) url('../img/cultos.png') center / cover no-repeat;
+    padding-top: var(--navbar-height);
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(15, 23, 42, 0.85) 0%,
+        rgba(37, 99, 235, 0.45) 100%
+    );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 2rem 1rem;
+    max-width: 900px;
+}
+
+.hero-title {
+    font-size: clamp(1.75rem, 5vw, 3.25rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+    color: var(--white);
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    opacity: 0.95;
+    max-width: 640px;
+    margin: 0 auto 2rem;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.hero-actions .btn-primary {
+    background: var(--primary);
+    border-color: var(--primary);
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+}
+
+.hero-actions .btn-primary:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.hero-actions .btn-outline-light:hover {
+    background: var(--white);
+    color: var(--dark);
+}
+
+/* Animaciones hero */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-up {
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.animate-fade-up.delay-1 {
+    animation-delay: 0.15s;
+    opacity: 0;
+}
+
+.animate-fade-up.delay-2 {
+    animation-delay: 0.3s;
+    opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-fade-up {
+        animation: none;
+        opacity: 1;
+    }
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* ========== Versículo ========== */
+.versiculo-section {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+    padding: 4rem 1.5rem;
+}
+
+.versiculo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.5rem 1.25rem;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+}
+
+.versiculo-text {
+    font-family: var(--font-heading);
+    font-size: clamp(1.125rem, 3vw, 1.5rem);
+    font-weight: 400;
+    font-style: italic;
+    max-width: 800px;
+    margin: 0 auto 1rem;
+    line-height: 1.7;
+    border: none;
+}
+
+.versiculo-ref {
+    font-size: 1.125rem;
+    font-weight: 600;
+    font-style: normal;
+    opacity: 0.9;
+}
+
+/* ========== Secciones generales ========== */
+.section-padding {
+    padding: 5rem 0;
+}
+
+.section-header {
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-bottom: 0.75rem;
+}
+
+.section-lead {
+    color: var(--text-muted);
+    font-size: 1.125rem;
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+.bg-light {
+    background-color: var(--light) !important;
+}
+
+/* ========== Cards informativas ========== */
+.info-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    height: 100%;
+}
+
+.info-card-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--primary);
+    border-radius: 14px;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.info-card h3 {
+    font-size: 1.35rem;
+    margin-bottom: 1rem;
+}
+
+.info-card p {
+    text-align: justify;
+    margin: 0;
+    color: var(--text);
+}
+
+/* Visión / Misión */
+.vision-mission-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.vision-mission-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card-top-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.card-body-custom {
+    padding: 2rem;
+}
+
+.card-body-custom p {
+    text-align: justify;
+    margin: 0;
+    color: var(--text);
+}
+
+/* ========== Ministerios ========== */
+.ministry-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+    height: 100%;
+    transition: transform var(--transition), box-shadow var(--transition);
+    border: 1px solid var(--border);
+}
+
+.ministry-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+.ministry-card i {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.ministry-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+}
+
+.ministry-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* ========== Horarios ========== */
+.schedule-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--border);
+    height: 100%;
+    transition: transform var(--transition);
+}
+
+.schedule-card:hover {
+    transform: translateY(-3px);
+}
+
+.schedule-day {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+}
+
+.schedule-time {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.schedule-open {
+    border-left-color: var(--primary);
+}
+
+.schedule-open .schedule-time {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.schedule-highlight {
+    border-left-color: var(--secondary);
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), var(--white));
+}
+
+.schedule-highlight .schedule-day {
+    color: var(--secondary-dark);
+}
+
+.schedule-closed .schedule-time {
+    opacity: 0.7;
+}
+
+/* ========== Galería ========== */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+}
+
+.gallery-item {
+    border: none;
+    padding: 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--dark);
+    aspect-ratio: 4 / 3;
+    position: relative;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.gallery-item:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-lg);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity var(--transition);
+}
+
+.gallery-item::after {
+    content: '\F52A';
+    font-family: 'bootstrap-icons';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15, 23, 42, 0.4);
+    color: var(--white);
+    font-size: 2rem;
+    opacity: 0;
+    transition: opacity var(--transition);
+}
+
+.gallery-item:hover::after {
+    opacity: 1;
+}
+
+/* Lightbox */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(15, 23, 42, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.lightbox[hidden] {
+    display: none !important;
+}
+
+.lightbox-img {
+    max-width: 95%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: var(--radius);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: transparent;
+    border: none;
+    color: var(--white);
+    font-size: 2.5rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0.25rem 0.75rem;
+}
+
+/* ========== Placeholder secciones ========== */
+.placeholder-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 3rem 2rem;
+    box-shadow: var(--shadow);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.placeholder-card i {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+/* ========== Formulario ========== */
+.form-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-lg);
+}
+
+.form-card .form-control {
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    padding: 0.75rem 1rem;
+}
+
+.form-card .form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.form-card .btn-primary {
+    background: var(--primary);
+    border-color: var(--primary);
+    font-weight: 600;
+}
+
+.form-card .btn-primary:hover:not(:disabled) {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.form-card .btn-primary:disabled {
+    opacity: 0.7;
+}
+
+/* ========== Contacto ========== */
+.contact-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+    height: 100%;
+}
+
+.contact-card i {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.contact-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.75rem;
+}
+
+.contact-card a {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.contact-card a:hover {
+    text-decoration: underline;
+}
+
+.btn-secondary {
+    background: var(--secondary);
+    border-color: var(--secondary);
+    color: var(--dark);
+    font-weight: 600;
+}
+
+.btn-secondary:hover {
+    background: var(--secondary-dark);
+    border-color: var(--secondary-dark);
+    color: var(--dark);
+}
+
+/* ========== Footer ========== */
+.site-footer {
+    background: var(--dark);
+    color: rgba(255, 255, 255, 0.85);
+    padding: 3rem 0 2rem;
+}
+
+.footer-brand {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+}
+
+.footer-title {
+    font-size: 1rem;
+    color: var(--white);
+    margin-bottom: 1rem;
+}
+
+.footer-address {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.social-links a {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    border-radius: 50%;
+    font-size: 1.35rem;
+    transition: background var(--transition), transform var(--transition);
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    background: var(--primary);
+    transform: translateY(-3px);
+    color: var(--white);
+}
+
+.copyright {
+    font-size: 0.875rem;
+    opacity: 0.75;
+    margin: 0;
+}
+
+/* ========== WhatsApp flotante ========== */
+.whatsapp-float {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+    z-index: 1000;
+    text-decoration: none;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.08);
+    color: var(--white);
+    box-shadow: 0 6px 28px rgba(37, 211, 102, 0.6);
+}
+
+/* ========== Toast personalizado ========== */
+.toast-custom {
+    font-family: var(--font-body);
+}
+
+.toast-custom.success .toast-header {
+    background: #DCFCE7;
+    color: #166534;
+}
+
+.toast-custom.error .toast-header {
+    background: #FEE2E2;
+    color: #991B1B;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 991.98px) {
+    #mainNavbar .navbar-collapse {
+        background: rgba(15, 23, 42, 0.98);
+        border-radius: var(--radius);
+        padding: 1rem;
+        margin-top: 0.75rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .section-padding {
+        padding: 3.5rem 0;
+    }
+
+    .form-card {
+        padding: 1.5rem;
+    }
+
+    .whatsapp-float {
+        width: 52px;
+        height: 52px;
+        bottom: 1rem;
+        right: 1rem;
+    }
+}
